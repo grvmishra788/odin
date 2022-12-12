@@ -59,18 +59,18 @@ criterion = nn.CrossEntropyLoss()
 
 def test(nnName, dataName, CUDA_DEVICE, epsilon, temperature):
     
-    # net1 = torch.load("../models/{}.pth".format(nnName))
+    net1 = torch.load("../models/{}.pth".format(nnName))
     # print(type(net1))
 
     # specify the model
-    net1 = ResNeXt29_2x64d()
-    net1 = net1.to(CUDA_DEVICE)
-    net1 = torch.nn.DataParallel(net1)
-    # cudnn.benchmark = True
+    # net1 = ResNeXt29_2x64d()
+    # net1 = net1.to(CUDA_DEVICE)
+    # net1 = torch.nn.DataParallel(net1)
+    # # cudnn.benchmark = True
 
-    checkpoint = torch.load('/home/grvmishra788/Projects/pytorch-cifar/checkpoint/ckpt.pth')
-    net1.load_state_dict(checkpoint['net'])
-    print(type(net1))
+    # checkpoint = torch.load('/home/grvmishra788/Projects/pytorch-cifar/checkpoint/ckpt.pth')
+    # net1.load_state_dict(checkpoint['net'])
+    # print(type(net1))
 
     optimizer1 = optim.SGD(net1.parameters(), lr = 0, momentum = 0)
     net1.cuda(CUDA_DEVICE)
